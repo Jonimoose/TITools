@@ -1,0 +1,50 @@
+TITools 0.1
+-----------
+
+ This package contains a collection of simple command-line tools for
+ communicating with TI graphing calculators.  These tools are based on
+ the excellent libticalcs2 library developed by the TiLP project (or
+ the equivalent libcalcprotocols library.)
+
+ To install the TITools, first be sure that you have installed
+ libticalcs2 or libcalcprotocols, along with its companion libraries
+ (libticables2/libcalccables, libtifiles2/libcalcfiles, and
+ libticonv/libcalcconv.)  You will also need the GLib library.
+
+ (If you've installed these libraries from binary packages (such as
+ Debian, Ubuntu, or Fedora packages), be sure that you install the
+ "development" (-dev or -devel) packages as well.)
+
+ To compile and install the TITools, run (from this directory):
+
+        ./configure
+        make
+        sudo make install
+
+
+About the tools
+---------------
+
+ More detailed information is provided in the manual page for each
+ tool (run, e.g., "man tiget" to read about the options for tiget.)
+
+   tiinfo      Prints out the calculator version and status
+
+   tils        Displays a list of programs and variables on the
+               calculator
+
+   tiget       Retrieves programs and variables from the calculator
+
+   tiput       Sends programs and variables to the calculator
+
+   tirm        Deletes programs and variables from the calculator
+
+   tiscr       Retrieves a screen shot from the calculator
+
+   tikey       Sends remote-control "key presses" to the calculator
+
+
+Author
+------
+
+ Benjamin Moody <floppusmaximus@users.sf.net>

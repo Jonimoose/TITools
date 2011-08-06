@@ -1,0 +1,91 @@
+.TH tiput 1 "August 2010" "TITools 0.1"
+.SH NAME
+tiput \- send files to a graphing calculator
+
+.SH SYNOPSIS
+\fBtiput\fR [ \fIoptions\fR ] \fIfile\fR ...
+
+.SH DESCRIPTION
+\fBtiput\fR sends variable and/or program files to a connected TI
+graphing calculator.  The files to send may include normal variables
+and programs, memory backups, Flash applications, and operating
+systems, in any of the various formats supported by the tifiles2
+library.
+
+On newer calculators, \fBtiput\fR will check if the variables already
+exist and ask whether you want to overwrite them.  Use the \fB\-f\fR
+option to disable this behavior.
+
+On older calculators (the TI-82 and TI-85), you must manually enable
+link receive mode before sending variables.  The calculator itself
+will then prompt you to overwrite, skip, or rename any duplicates.
+
+.SS PROGRAM OPTIONS
+.TP
+\fB\-a\fR, \fB\-\-archive\fR
+Send all files to archive (Flash) memory, if supported by the
+calculator, regardless of their previous state.  (By default, files
+will be sent to archive if they were previously received from a Flash
+calculator and are marked as archived.)
+.TP
+\fB\-u\fR, \fB\-\-unarchive\fR
+Send all files to RAM, regardless of their previous state.
+.TP
+\fB\-f\fR, \fB\-\-force\fR
+Do not check for duplicate variables before sending.  This has no
+effect on the TI-82 and TI-85.
+.TP
+\fB\-C\fR, \fB\-\-continue\fR
+On the TI-82 and TI-85, do not send an ``end-of-transmission''
+command, so the calculator will remain in link receive mode.
+
+.SS LINK OPTIONS
+.TP
+\fB\-c\fR, \fB\-\-cable\fR=\fItype\fR[:\fIport\fR]
+Use the specified link cable (if unspecified, \fBtiput\fR will search
+for USB cables connected to the system.)  The cable type may be either
+the full name (GrayLink, BlackLink, Parallel, SilverLink, DirectLink,
+VTI, TiEmu, UsbKernel) or the 3-letter abbreviation (gry, blk, par,
+slv, usb, vti, tie, dev).  For serial- and parallel-port link cables,
+a port number must also be specified.
+.TP
+\fB\-m\fR, \fB\-\-calc\fR=\fItype\fR
+Use the specified calculator model (if unspecified, \fBtiput\fR will
+try to determine the calculator model by the filenames specified on
+the command line.)
+.TP
+\fB\-\-timeout\fR=\fIn\fR
+Wait for up to \fIn\fR milliseconds for the calculator to respond.
+
+.SS OTHER OPTIONS
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR
+Print out details of link operations.
+.TP
+\fB\-\-help\fR
+Print out program version information.
+.TP
+\fB\-\-version\fR
+Print out program version information.
+
+.SH ENVIRONMENT VARIABLES
+.TP
+\fBTITOOLS_CABLE\fR
+Default link cable to use, if the \fB\-c\fR option is not specified.
+.TP
+\fBTITOOLS_CALC\fR
+Default calculator model to use, if the \fB\-m\fR option is not specified.
+.TP
+\fBTITOOLS_TIMEOUT\fR
+Default timeout value in milliseconds.
+
+.SH SEE ALSO
+\fBtiget\fR(1),
+\fBtiinfo\fR(1),
+\fBtikey\fR(1),
+\fBtils\fR(1),
+\fBtirm\fR(1),
+\fBtiscr\fR(1)
+
+.SH AUTHOR
+Benjamin Moody <floppusmaximus@users.sf.net>

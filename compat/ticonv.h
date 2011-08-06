@@ -1,0 +1,29 @@
+#include <calcconv.h>
+
+#ifndef ticonv_version_get
+# define ticonv_version_get calcconv_version_get
+# define ticonv_utf16_strlen calcconv_utf16_strlen
+# define ticonv_utf8_to_utf16 calcconv_utf8_to_utf16
+# define ticonv_utf16_to_utf8 calcconv_utf16_to_utf8
+# define ticonv_charset_utf16_to_ti_s calcconv_charset_utf16_to_ti_s
+# define ticonv_charset_ti_to_utf16_s calcconv_charset_ti_to_utf16_s
+# define ticonv_charset_utf16_to_ti calcconv_charset_utf16_to_ti
+# define ticonv_charset_ti_to_utf16 calcconv_charset_ti_to_utf16
+# define ticonv_varname_to_utf16_s calcconv_varname_to_utf16_s
+# define ticonv_varname_to_utf16 calcconv_varname_to_utf16
+# define ticonv_varname_to_utf8_s calcconv_varname_to_utf8_s
+# define ticonv_varname_to_utf8 calcconv_varname_to_utf8
+# define ticonv_varname_to_filename_s calcconv_varname_to_filename_s
+# define ticonv_varname_to_filename calcconv_varname_to_filename
+# define ticonv_varname_to_tifile_s calcconv_varname_to_tifile_s
+# define ticonv_varname_to_tifile calcconv_varname_to_tifile
+# define ticonv_varname_from_tifile_s calcconv_varname_from_tifile_s
+# define ticonv_varname_from_tifile calcconv_varname_from_tifile
+# define ticonv_varname_detokenize calcconv_varname_detokenize
+# define ticonv_varname_tokenize calcconv_varname_tokenize
+# define ticonv_utf16_to_gfe calcconv_utf16_to_gfe
+# define ticonv_gfe_to_zfe calcconv_gfe_to_zfe
+# define ticonv_iconv_open calcconv_iconv_open
+# define ticonv_iconv calcconv_iconv
+# define ticonv_iconv_close calcconv_iconv_close
+#endif

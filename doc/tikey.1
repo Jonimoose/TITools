@@ -1,0 +1,67 @@
+.TH tikey 1 "August 2010" "TITools 0.1"
+.SH NAME
+tikey \- remotely control a graphing calculator
+
+.SH SYNOPSIS
+\fBtikey\fR [ \fIoptions\fR ] \fItext\fR ...
+
+.SH DESCRIPTION
+\fBtikey\fR allows you to type commands on a connected TI graphing
+calculator, using the ``remote control'' protocol supported by newer
+calculator models.
+
+The command-line arguments will be typed out as ASCII strings.  If you
+need to send a special keycode, you can write it as an octal or
+hexadecimal value preceded by `\\' or `\\x' (e.g., `\\111' or `\\x49'
+for the `Y=' key on the TI-83 series.)  See the calculator SDK
+documentation for the actual keycode values.
+
+.SS LINK OPTIONS
+.TP
+\fB\-c\fR, \fB\-\-cable\fR=\fItype\fR[:\fIport\fR]
+Use the specified link cable (if unspecified, \fBtikey\fR will search
+for USB cables connected to the system.)  The cable type may be either
+the full name (GrayLink, BlackLink, Parallel, SilverLink, DirectLink,
+VTI, TiEmu, UsbKernel) or the 3-letter abbreviation (gry, blk, par,
+slv, usb, vti, tie, dev).  For serial- and parallel-port link cables,
+a port number must also be specified.
+.TP
+\fB\-m\fR, \fB\-\-calc\fR=\fItype\fR
+Use the specified calculator model (if unspecified, \fBtikey\fR will
+try to determine the calculator model automatically.)
+.TP
+\fB\-\-timeout\fR=\fIn\fR
+Wait for up to \fIn\fR milliseconds for the calculator to respond.
+
+.SS OTHER OPTIONS
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR
+Print out details of link operations.
+.TP
+\fB\-\-help\fR
+Print out program version information.
+.TP
+\fB\-\-version\fR
+Print out program version information.
+
+.SH ENVIRONMENT VARIABLES
+.TP
+\fBTITOOLS_CABLE\fR
+Default link cable to use, if the \fB\-c\fR option is not specified.
+.TP
+\fBTITOOLS_CALC\fR
+Default calculator model to use, if the \fB\-m\fR option is not specified.
+.TP
+\fBTITOOLS_TIMEOUT\fR
+Default timeout value in milliseconds.
+
+.SH SEE ALSO
+\fBtiget\fR(1),
+\fBtiinfo\fR(1),
+\fBtils\fR(1),
+\fBtiput\fR(1),
+\fBtirm\fR(1),
+\fBtiscr\fR(1)
+
+.SH AUTHOR
+Benjamin Moody <floppusmaximus@users.sf.net>

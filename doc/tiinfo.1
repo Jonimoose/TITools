@@ -1,0 +1,63 @@
+.TH tiinfo 1 "August 2010" "TITools 0.1"
+.SH NAME
+tiinfo \- display information about a graphing calculator
+
+.SH SYNOPSIS
+\fBtiinfo\fR [ \fIoptions\fR ]
+
+.SH DESCRIPTION
+\fBtiinfo\fR displays information about a connected TI graphing
+calculator.  Depending on how much information is supplied by the
+calculator, \fBtiinfo\fR will try to determine the calculator software
+and hardware versions, hardware attributes, amount of free memory,
+battery status, and language settings.
+
+.SS LINK OPTIONS
+.TP
+\fB\-c\fR, \fB\-\-cable\fR=\fItype\fR[:\fIport\fR]
+Use the specified link cable (if unspecified, \fBtiinfo\fR will search
+for USB cables connected to the system.)  The cable type may be either
+the full name (GrayLink, BlackLink, Parallel, SilverLink, DirectLink,
+VTI, TiEmu, UsbKernel) or the 3-letter abbreviation (gry, blk, par,
+slv, usb, vti, tie, dev).  For serial- and parallel-port link cables,
+a port number must also be specified.
+.TP
+\fB\-m\fR, \fB\-\-calc\fR=\fItype\fR
+Use the specified calculator model (if unspecified, \fBtiinfo\fR will
+try to determine the calculator model automatically.)
+.TP
+\fB\-\-timeout\fR=\fIn\fR
+Wait for up to \fIn\fR milliseconds for the calculator to respond.
+
+.SS OTHER OPTIONS
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR
+Print out details of link operations.
+.TP
+\fB\-\-help\fR
+Print out program version information.
+.TP
+\fB\-\-version\fR
+Print out program version information.
+
+.SH ENVIRONMENT VARIABLES
+.TP
+\fBTITOOLS_CABLE\fR
+Default link cable to use, if the \fB\-c\fR option is not specified.
+.TP
+\fBTITOOLS_CALC\fR
+Default calculator model to use, if the \fB\-m\fR option is not specified.
+.TP
+\fBTITOOLS_TIMEOUT\fR
+Default timeout value in milliseconds.
+
+.SH SEE ALSO
+\fBtiget\fR(1),
+\fBtikey\fR(1),
+\fBtils\fR(1),
+\fBtiput\fR(1),
+\fBtirm\fR(1),
+\fBtiscr\fR(1)
+
+.SH AUTHOR
+Benjamin Moody <floppusmaximus@users.sf.net>

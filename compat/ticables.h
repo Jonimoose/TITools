@@ -1,0 +1,41 @@
+#include <calccables.h>
+
+#ifndef ticables_version_get
+# define ticables_library_init calccables_library_init
+# define ticables_library_exit calccables_library_exit
+# define ticables_version_get calccables_version_get
+# define ticables_handle_new calccables_handle_new
+# define ticables_handle_del calccables_handle_del
+# define ticables_options_set_timeout calccables_options_set_timeout
+# define ticables_options_set_delay calccables_options_set_delay
+# define ticables_get_model calccables_get_model
+# define ticables_get_port calccables_get_port
+# define ticables_handle_show calccables_handle_show
+# define ticables_cable_open calccables_cable_open
+# define ticables_cable_close calccables_cable_close
+# define ticables_cable_reset calccables_cable_reset
+# define ticables_cable_probe calccables_cable_probe
+# define ticables_cable_send calccables_cable_send
+# define ticables_cable_recv calccables_cable_recv
+# define ticables_cable_check calccables_cable_check
+# define ticables_cable_check calccables_cable_check
+# define ticables_cable_set_d0 calccables_cable_set_d0
+# define ticables_cable_set_d1 calccables_cable_set_d1
+# define ticables_cable_get_d0 calccables_cable_get_d0
+# define ticables_cable_get_d1 calccables_cable_get_d1
+# define ticables_progress_reset calccables_progress_reset
+# define ticables_progress_get calccables_progress_get
+# define ticables_cable_put calccables_cable_put
+# define ticables_cable_get calccables_cable_get
+# define ticables_error_get calccables_error_get
+# define ticables_model_to_string calccables_model_to_string
+# define ticables_string_to_model calccables_string_to_model
+# define ticables_port_to_string calccables_port_to_string
+# define ticables_string_to_port calccables_string_to_port
+# define ticables_usbpid_to_string calccables_usbpid_to_string
+# define ticables_string_to_usbpid calccables_string_to_usbpid
+# define ticables_probing_do calccables_probing_do
+# define ticables_probing_finish calccables_probing_finish
+# define ticables_is_usb_enabled calccables_is_usb_enabled
+# define ticables_get_usb_devices calccables_get_usb_devices
+#endif

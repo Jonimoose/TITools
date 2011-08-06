@@ -1,0 +1,75 @@
+.TH tiscr 1 "August 2010" "TITools 0.1"
+.SH NAME
+tiscr \- take a screen shot of a graphing calculator
+
+.SH SYNOPSIS
+\fBtiscr\fR [ \fIoptions\fR ] [ \fB\-o\fR \fIoutput.pbm\fR ]
+
+.SH DESCRIPTION
+\fBtiscr\fR takes a screen shot of a connected TI graphing calculator.
+Screen shots can be taken at any time when the calculator is turned on
+and idle (depending on the circumstances, you may not be able to take
+screen shots while a program is running.)
+
+The output is written in Portable Bitmap format (see \fBpbm\fR(5) if
+you have the netpbm tools installed.)
+
+.SS PROGRAM OPTIONS
+.TP
+\fB\-o\fR, \fB\-\-output\fR=\fIfilename\fR
+Write output to \fIfilename\fR (PBM format.)
+.TP
+\fB\-A\fR, \fB\-\-full\fR
+Include the entire screen buffer in the output image (including parts
+that are not shown on the display.)  This only has an effect on the
+TI-89.
+
+.SS LINK OPTIONS
+.TP
+\fB\-c\fR, \fB\-\-cable\fR=\fItype\fR[:\fIport\fR]
+Use the specified link cable (if unspecified, \fBtiscr\fR will search
+for USB cables connected to the system.)  The cable type may be either
+the full name (GrayLink, BlackLink, Parallel, SilverLink, DirectLink,
+VTI, TiEmu, UsbKernel) or the 3-letter abbreviation (gry, blk, par,
+slv, usb, vti, tie, dev).  For serial- and parallel-port link cables,
+a port number must also be specified.
+.TP
+\fB\-m\fR, \fB\-\-calc\fR=\fItype\fR
+Use the specified calculator model (if unspecified, \fBtiscr\fR will
+try to determine the calculator model automatically.)
+.TP
+\fB\-\-timeout\fR=\fIn\fR
+Wait for up to \fIn\fR milliseconds for the calculator to respond.
+
+.SS OTHER OPTIONS
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR
+Print out details of link operations.
+.TP
+\fB\-\-help\fR
+Print out program version information.
+.TP
+\fB\-\-version\fR
+Print out program version information.
+
+.SH ENVIRONMENT VARIABLES
+.TP
+\fBTITOOLS_CABLE\fR
+Default link cable to use, if the \fB\-c\fR option is not specified.
+.TP
+\fBTITOOLS_CALC\fR
+Default calculator model to use, if the \fB\-m\fR option is not specified.
+.TP
+\fBTITOOLS_TIMEOUT\fR
+Default timeout value in milliseconds.
+
+.SH SEE ALSO
+\fBtiget\fR(1),
+\fBtiinfo\fR(1),
+\fBtikey\fR(1),
+\fBtils\fR(1),
+\fBtiput\fR(1),
+\fBtirm\fR(1)
+
+.SH AUTHOR
+Benjamin Moody <floppusmaximus@users.sf.net>

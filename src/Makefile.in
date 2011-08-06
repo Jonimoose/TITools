@@ -1,0 +1,92 @@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+bindir = @bindir@
+
+CC = @CC@
+CFLAGS = @CFLAGS@
+CPPFLAGS = @CPPFLAGS@
+DEFS = @DEFS@
+INSTALL = @INSTALL@
+LDFLAGS = @LDFLAGS@
+LIBS = @LIBS@
+
+TICALCS_CFLAGS = @TICALCS_CFLAGS@
+TICALCS_LIBS = @TICALCS_LIBS@
+
+@SET_MAKE@
+srcdir = @srcdir@
+VPATH = @srcdir@
+top_srcdir = @top_srcdir@
+top_builddir = @top_builddir@
+
+compile = $(CC) -I$(top_builddir) -I$(srcdir) $(CFLAGS) $(CPPFLAGS) $(TICALCS_CFLAGS) $(DEFS)
+link = $(CC) $(CFLAGS) $(LDFLAGS)
+libs = $(TICALCS_LIBS) $(LIBS)
+
+programs = tiget@EXEEXT@ \
+	   tiinfo@EXEEXT@ \
+	   tikey@EXEEXT@ \
+	   tils@EXEEXT@ \
+	   tiput@EXEEXT@ \
+	   tirm@EXEEXT@ \
+	   tiscr@EXEEXT@
+
+all: $(programs)
+
+install: all
+	$(INSTALL) -d -m 755 $(DESTDIR)$(bindir)
+	set -e ; for i in $(programs) ; do \
+	 $(INSTALL) -m 755 $$i $(DESTDIR)$(bindir) ; \
+	done
+
+uninstall:
+	set -e ; for i in $(programs) ; do \
+	 rm -f $(DESTDIR)$(bindir)/$$i ; \
+	done
+
+common.@OBJEXT@: common.c titools.h
+	$(compile) -c $(srcdir)/common.c
+
+glob.@OBJEXT@: glob.c titools.h
+	$(compile) -c $(srcdir)/glob.c
+
+tiget@EXEEXT@: tiget.@OBJEXT@ common.@OBJEXT@ glob.@OBJEXT@
+	$(link) -o tiget@EXEEXT@ tiget.@OBJEXT@ common.@OBJEXT@ glob.@OBJEXT@ $(libs)
+tiget.@OBJEXT@: tiget.c titools.h
+	$(compile) -c $(srcdir)/tiget.c
+
+tiinfo@EXEEXT@: tiinfo.@OBJEXT@ common.@OBJEXT@
+	$(link) -o tiinfo@EXEEXT@ tiinfo.@OBJEXT@ common.@OBJEXT@ $(libs)
+tiinfo.@OBJEXT@: tiinfo.c titools.h
+	$(compile) -c $(srcdir)/tiinfo.c
+
+tikey@EXEEXT@: tikey.@OBJEXT@ common.@OBJEXT@
+	$(link) -o tikey@EXEEXT@ tikey.@OBJEXT@ common.@OBJEXT@ $(libs)
+tikey.@OBJEXT@: tikey.c titools.h
+	$(compile) -c $(srcdir)/tikey.c
+
+tils@EXEEXT@: tils.@OBJEXT@ common.@OBJEXT@ glob.@OBJEXT@
+	$(link) -o tils@EXEEXT@ tils.@OBJEXT@ common.@OBJEXT@ glob.@OBJEXT@ $(libs)
+tils.@OBJEXT@: tils.c titools.h
+	$(compile) -c $(srcdir)/tils.c
+
+tiput@EXEEXT@: tiput.@OBJEXT@ common.@OBJEXT@
+	$(link) -o tiput@EXEEXT@ tiput.@OBJEXT@ common.@OBJEXT@ $(libs)
+tiput.@OBJEXT@: tiput.c titools.h
+	$(compile) -c $(srcdir)/tiput.c
+
+tirm@EXEEXT@: tirm.@OBJEXT@ common.@OBJEXT@ glob.@OBJEXT@
+	$(link) -o tirm@EXEEXT@ tirm.@OBJEXT@ common.@OBJEXT@ glob.@OBJEXT@ $(libs)
+tirm.@OBJEXT@: tirm.c titools.h
+	$(compile) -c $(srcdir)/tirm.c
+
+tiscr@EXEEXT@: tiscr.@OBJEXT@ common.@OBJEXT@
+	$(link) -o tiscr@EXEEXT@ tiscr.@OBJEXT@ common.@OBJEXT@ $(libs)
+tiscr.@OBJEXT@: tiscr.c titools.h
+	$(compile) -c $(srcdir)/tiscr.c
+
+clean:
+	rm -f $(programs)
+	rm -f *.@OBJEXT@
+
+.PHONY: all clean install

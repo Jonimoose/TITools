@@ -1,0 +1,32 @@
+prefix = @prefix@
+datarootdir = @datarootdir@
+mandir = @mandir@
+
+INSTALL = @INSTALL@
+
+@SET_MAKE@
+srcdir = @srcdir@
+VPATH = @srcdir@
+
+manpages = tiget.1 \
+	   tiinfo.1 \
+	   tikey.1 \
+	   tils.1 \
+	   tiput.1 \
+	   tirm.1 \
+	   tiscr.1
+
+all:
+
+install:
+	$(INSTALL) -d -m 755 $(DESTDIR)$(mandir)/man1
+	set -e ; for i in $(manpages) ; do \
+	 $(INSTALL) -m 644 $(srcdir)/$$i $(DESTDIR)$(mandir)/man1 ; \
+	done
+
+uninstall:
+	set -e ; for i in $(manpages) ; do \
+	 rm -f $(DESTDIR)$(mandir)/man1/$$i ; \
+	done
+
+.PHONY: all install uninstall

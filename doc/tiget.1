@@ -1,0 +1,90 @@
+.TH tiget 1 "August 2010" "TITools 0.1"
+.SH NAME
+tiget \- retrieve files from a graphing calculator
+
+.SH SYNOPSIS
+\fBtiget\fR [ \fIoptions\fR ] [ \fIvariable-pattern\fR ... | \fB\-\-backup\fR ]
+
+.SH DESCRIPTION
+\fBtiget\fR retrieves variable and/or program files from a connected
+TI graphing calculator.
+
+For newer calculators, you can specify a list of variable patterns
+(such as `FOO.8xp', `*.83l', or simply `*' to download all files from
+the calculator.)  (Remember that if you use wildcards, you must
+enclose the pattern in quotes so that the shell will not try to
+interpret the pattern itself.)
+
+For older calculators (the TI-82 and TI-85), you must instead select
+the files to be transferred on the calculator itself.  Run \fBtiget
+\-m\fR \fImodel\fR (without listing any patterns), then send the
+desired files using the calculator's LINK menu.
+
+By default, the retrieved variables will be saved as separate files in
+the current directory, in TI Graph Link format.  Use the \fB\-o\fR
+option to save the files as a single group file or TIG (ZIP) archive.
+
+.SS PROGRAM OPTIONS
+.TP
+\fB\-b\fR, \fB\-\-backup\fR
+Receive a full memory backup from the calculator (only supported for
+non-Flash calculator models.)  You must also specify \fB\-o\fR.
+.TP
+\fB\-o\fR, \fB\-\-output\fR=\fIfilename\fR
+Write all output to \fIfilename\fR.  If \fIfilename\fR ends in `.tig',
+write output as a TIG archive.  Otherwise, write output as either a TI
+Graph Link group file (.XXg), Flash application file (.XXk), or backup
+file (.XXb).  Note that group files cannot contain Flash applications
+and are limited to a maximum total size of 64 kilobytes; TIG files do
+not have these limitations.
+
+.SS LINK OPTIONS
+.TP
+\fB\-c\fR, \fB\-\-cable\fR=\fItype\fR[:\fIport\fR]
+Use the specified link cable (if unspecified, \fBtiget\fR will search
+for USB cables connected to the system.)  The cable type may be either
+the full name (GrayLink, BlackLink, Parallel, SilverLink, DirectLink,
+VTI, TiEmu, UsbKernel) or the 3-letter abbreviation (gry, blk, par,
+slv, usb, vti, tie, dev).  For serial- and parallel-port link cables,
+a port number must also be specified.
+.TP
+\fB\-m\fR, \fB\-\-calc\fR=\fItype\fR
+Use the specified calculator model (if unspecified, \fBtiget\fR will
+try to determine the calculator model by the filenames specified on
+the command line.)
+.TP
+\fB\-\-timeout\fR=\fIn\fR
+Wait for up to \fIn\fR milliseconds for the calculator to respond.
+
+.SS OTHER OPTIONS
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR
+Print out details of link operations.
+.TP
+\fB\-\-help\fR
+Print out program version information.
+.TP
+\fB\-\-version\fR
+Print out program version information.
+
+.SH ENVIRONMENT VARIABLES
+.TP
+\fBTITOOLS_CABLE\fR
+Default link cable to use, if the \fB\-c\fR option is not specified.
+.TP
+\fBTITOOLS_CALC\fR
+Default calculator model to use, if the \fB\-m\fR option is not specified.
+.TP
+\fBTITOOLS_TIMEOUT\fR
+Default timeout value in milliseconds.
+
+.SH SEE ALSO
+\fBtiinfo\fR(1),
+\fBtikey\fR(1),
+\fBtils\fR(1),
+\fBtiput\fR(1),
+\fBtirm\fR(1),
+\fBtiscr\fR(1)
+
+.SH AUTHOR
+Benjamin Moody <floppusmaximus@users.sf.net>

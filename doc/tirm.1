@@ -1,0 +1,67 @@
+.TH tirm 1 "August 2010" "TITools 0.1"
+.SH NAME
+tirm \- delete files from a graphing calculator
+
+.SH SYNOPSIS
+\fBtirm\fR [ \fIoptions\fR ] \fIvariable-pattern\fR ...
+
+.SH DESCRIPTION
+\fBtirm\fR remotely deletes variable and/or program files from a
+connected TI graphing calculator.  (Note that only newer calculators
+support remote file deletion.)
+
+You can specify exact variable names to be deleted (such as
+`FOO.8xp'), or use wildcards to delete all files matching a certain
+pattern (such as `*.83l').  (Remember that if you use wildcards, you
+must enclose the pattern in quotes so that the shell will not try to
+interpret the pattern itself.)
+
+.SS LINK OPTIONS
+.TP
+\fB\-c\fR, \fB\-\-cable\fR=\fItype\fR[:\fIport\fR]
+Use the specified link cable (if unspecified, \fBtirm\fR will search
+for USB cables connected to the system.)  The cable type may be either
+the full name (GrayLink, BlackLink, Parallel, SilverLink, DirectLink,
+VTI, TiEmu, UsbKernel) or the 3-letter abbreviation (gry, blk, par,
+slv, usb, vti, tie, dev).  For serial- and parallel-port link cables,
+a port number must also be specified.
+.TP
+\fB\-m\fR, \fB\-\-calc\fR=\fItype\fR
+Use the specified calculator model (if unspecified, \fBtirm\fR will
+try to determine the calculator model automatically.)
+.TP
+\fB\-\-timeout\fR=\fIn\fR
+Wait for up to \fIn\fR milliseconds for the calculator to respond.
+
+.SS OTHER OPTIONS
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR
+Print out details of link operations.
+.TP
+\fB\-\-help\fR
+Print out program version information.
+.TP
+\fB\-\-version\fR
+Print out program version information.
+
+.SH ENVIRONMENT VARIABLES
+.TP
+\fBTITOOLS_CABLE\fR
+Default link cable to use, if the \fB\-c\fR option is not specified.
+.TP
+\fBTITOOLS_CALC\fR
+Default calculator model to use, if the \fB\-m\fR option is not specified.
+.TP
+\fBTITOOLS_TIMEOUT\fR
+Default timeout value in milliseconds.
+
+.SH SEE ALSO
+\fBtiget\fR(1),
+\fBtiinfo\fR(1),
+\fBtikey\fR(1),
+\fBtils\fR(1),
+\fBtiput\fR(1),
+\fBtiscr\fR(1)
+
+.SH AUTHOR
+Benjamin Moody <floppusmaximus@users.sf.net>
