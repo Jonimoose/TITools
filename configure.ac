@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.67])
-AC_INIT([TITools], [0.1], [floppusmaximus@users.sf.net])
+AC_INIT([TITools], [0.2], [floppusmaximus@users.sf.net])
 AC_CONFIG_SRCDIR([src/titools.h])
 AC_CONFIG_HEADERS([config.h])
 
