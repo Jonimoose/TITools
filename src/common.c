@@ -555,6 +555,13 @@ void tt_init(int argc, char **argv, const GOptionEntry *app_options,
     tt_exit();
     exit(EXIT_CABLE_FAILED);
   }
+
+  /*Check if calc is ready */
+  if ((e = ticalcs_calc_isready(calc_handle))) {
+    tt_print_error(e, "calculator not ready");
+    tt_exit();
+    exit(EXIT_CABLE_FAILED);
+  }
 }
 
 void tt_exit()
