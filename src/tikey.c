@@ -49,7 +49,8 @@ static uint16_t ascii_to_key(CalcModel model, char c)
     ck = ticalcs_keys_83p(c);
   else if (model == CALC_TI86)
     ck = ticalcs_keys_86(c);
-  else if (model == CALC_TI89 || model == CALC_TI89T_USB)
+  else if (model == CALC_TI89 || model == CALC_TI89T_USB
+	   || model == CALC_TI89T)
     ck = ticalcs_keys_89(c);
   else if (model == CALC_TI92 || model == CALC_TI92P
 	   || model == CALC_V200)
