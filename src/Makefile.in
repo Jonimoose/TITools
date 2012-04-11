@@ -29,7 +29,8 @@ programs = tiget@EXEEXT@ \
 	   tils@EXEEXT@ \
 	   tiput@EXEEXT@ \
 	   tirm@EXEEXT@ \
-	   tiscr@EXEEXT@
+	   tiscr@EXEEXT@ \
+	   tidump@EXEEXT@
 
 all: $(programs)
 
@@ -45,7 +46,7 @@ uninstall:
 	done
 
 common.@OBJEXT@: common.c titools.h
-	$(compile) -c $(srcdir)/common.c
+	$(compile) -c $(srcdir)/common.c $(srcdir)/dbus_pkt.c $(srcdir)/cmd73.c
 
 glob.@OBJEXT@: glob.c titools.h
 	$(compile) -c $(srcdir)/glob.c
@@ -74,6 +75,11 @@ tiput@EXEEXT@: tiput.@OBJEXT@ common.@OBJEXT@
 	$(link) -o tiput@EXEEXT@ tiput.@OBJEXT@ common.@OBJEXT@ $(libs)
 tiput.@OBJEXT@: tiput.c titools.h
 	$(compile) -c $(srcdir)/tiput.c
+
+tidump@EXEEXT@: tidump.@OBJEXT@ common.@OBJEXT@
+	$(link) -o tidump@EXEEXT@ tidump.@OBJEXT@ common.@OBJEXT@  dbus_pkt.o cmd73.o $(libs)
+tidump.@OBJEXT@: tidump.c titools.h dbus_pkt.h cmd73.h
+	$(compile) -c $(srcdir)/tidump.c
 
 tirm@EXEEXT@: tirm.@OBJEXT@ common.@OBJEXT@ glob.@OBJEXT@
 	$(link) -o tirm@EXEEXT@ tirm.@OBJEXT@ common.@OBJEXT@ glob.@OBJEXT@ $(libs)
