@@ -29,7 +29,8 @@ programs = tiget@EXEEXT@ \
 	   tils@EXEEXT@ \
 	   tiput@EXEEXT@ \
 	   tirm@EXEEXT@ \
-	   tiscr@EXEEXT@
+	   tiscr@EXEEXT@ \
+	   tidump@EXEEXT@
 
 all: $(programs)
 
@@ -74,6 +75,11 @@ tiput@EXEEXT@: tiput.@OBJEXT@ common.@OBJEXT@
 	$(link) -o tiput@EXEEXT@ tiput.@OBJEXT@ common.@OBJEXT@ $(libs)
 tiput.@OBJEXT@: tiput.c titools.h
 	$(compile) -c $(srcdir)/tiput.c
+
+tidump@EXEEXT@: tidump.@OBJEXT@ common.@OBJEXT@
+	$(link) -o tidump@EXEEXT@ tidump.@OBJEXT@ common.@OBJEXT@ $(libs)
+tidump.@OBJEXT@: tidump.c titools.h
+	$(compile) -c $(srcdir)/tidump.c
 
 tirm@EXEEXT@: tirm.@OBJEXT@ common.@OBJEXT@ glob.@OBJEXT@
 	$(link) -o tirm@EXEEXT@ tirm.@OBJEXT@ common.@OBJEXT@ glob.@OBJEXT@ $(libs)
