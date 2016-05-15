@@ -25,7 +25,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "titools.h"
-#include <cmd73.h>
+#include <cmdz80.h>
 
 #define PKTSIZE 0x400
 

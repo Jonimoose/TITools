@@ -40,6 +40,9 @@ init_function=ticalcs_library_init
 if test "x$TICALCS_LIBS" = "x" &&
    test "x$use_calcprotocols" = "xno" ; then
   PKG_CHECK_MODULES(TICALCS, ticalcs2, [ : ], [ : ])
+  PKG_CHECK_MODULES(TICABLES, ticables2, [ : ], [ : ])
+  PKG_CHECK_MODULES(TIFILES, tifiles2, [ : ], [ : ])
+  PKG_CHECK_MODULES(TICONV, ticonv, [ : ], [ : ])
 fi
 
 if test "x$TICALCS_LIBS" = "x" &&
@@ -53,8 +56,8 @@ fi
 
 save_cflags="$CFLAGS"
 save_libs="$LIBS"
-CFLAGS="$CFLAGS $TICALCS_CFLAGS"
-LIBS="$LIBS $TICALCS_LIBS"
+CFLAGS="$CFLAGS $TICALCS_CFLAGS $TICABLES_CFLAGS $TIFILES_CFLAGS $TICONV_CFLAGS"
+LIBS="$LIBS $TICALCS_LIBS $TICABLES_LIBS $TIFILES_LIBS $TICONV_LIBS"
 AC_CHECK_FUNC($init_function,
   [ have_ticalcs=yes ],
   [ have_ticalcs=no ])
